@@ -3,7 +3,10 @@
 > **版本**：v1.0.0 (Golden Benchmark)  
 > **核心使命**：基於 Node.js 24 原生 WebSocket 與系統既有 Chrome / Edge 瀏覽器，提供高精確度、零外部龐大依賴（Zero-Dependency）的實機視覺驗收與自動化截圖 MCP 伺服器。  
 > **由來**：從本機原創的 `chrome-cdp-screenshot` 技能完美進化，升級為符合 Model Context Protocol (MCP) 標準的獨立架構資產。  
-> **專題對照**：[與 undetectable-io/chromium-cdp-mcp 之深度功能與效能對照報告](./docs/comparison_with_undetectable_cdp.md)
+>
+> 📚 **深入評估與對照白皮書**：  
+> * 🌐 **[全景橫向評估白皮書](./docs/market_cdp_solutions_comparison.md)**：包含 Playwright MCP、cdp-browser-mcp、undetectable-io、mcp-chromium-cdp 五大派系全維度指標對決。  
+> * 🥊 **[單挑深度對照報告](./docs/comparison_with_undetectable_cdp.md)**：針對 25 款工具之 undetectable-io 進行 1v1 裸體深度對照（Token 消耗、React 穿透與原子化操作）。
 
 ---
 
