@@ -7,6 +7,23 @@
   "bin": {
     "cdp-mcp": "./dist/index.js"
   },
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/xx8897/cdp-mcp.git"
+  },
+  "author": "xx8897",
+  "license": "Apache-2.0",
+  "keywords": [
+    "mcp",
+    "model-context-protocol",
+    "cdp",
+    "chrome-devtools-protocol",
+    "screenshot",
+    "visual-regression",
+    "agentic-ai",
+    "automation",
+    "zero-dependency"
+  ],
   "scripts": {
     "build": "tsc",
     "dev": "tsc --watch",
