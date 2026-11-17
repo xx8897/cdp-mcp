@@ -1,0 +1,7 @@
+cdp-mcp
+Copyright 2026 xx8897 and cdp-mcp contributors
+
+This product includes software developed by xx8897 (https://github.com/xx8897/cdp-mcp).
+
+Originally evolved from the native chrome-cdp-screenshot architecture, providing
+zero-dependency Chrome DevTools Protocol automation and visual verification.
