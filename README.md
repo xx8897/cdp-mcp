@@ -2,7 +2,8 @@
 
 > **版本**：v1.0.0 (Golden Benchmark)  
 > **核心使命**：基於 Node.js 24 原生 WebSocket 與系統既有 Chrome / Edge 瀏覽器，提供高精確度、零外部龐大依賴（Zero-Dependency）的實機視覺驗收與自動化截圖 MCP 伺服器。  
-> **由來**：從本機原創的 `chrome-cdp-screenshot` 技能完美進化，升級為符合 Model Context Protocol (MCP) 標準的獨立架構資產。
+> **由來**：從本機原創的 `chrome-cdp-screenshot` 技能完美進化，升級為符合 Model Context Protocol (MCP) 標準的獨立架構資產。  
+> **專題對照**：[與 undetectable-io/chromium-cdp-mcp 之深度功能與效能對照報告](./docs/comparison_with_undetectable_cdp.md)
 
 ---
 
@@ -19,6 +20,23 @@
    * 直接由 Chrome 渲染合成器在指定像素邊界無損裁切 PNG，杜絕二次縮放模糊。
 5. **獨立沙盒與生命週期自動管理 (Process Guard)**：
    * 每次啟動使用獨立的臨時 `--user-data-dir`，執行完畢自動清理暫存檔與殺死進程，絕不產生孤兒進程吃光記憶體。
+
+---
+
+## 📊 市面主流 CDP / 截圖方案橫向對照表
+
+| 評估維度 | 官方派 (Playwright MCP) | 開源 CDP 派 (cdp-browser-mcp 等) | 重型控制派 (chromium-cdp-mcp) | 🌟 **cdp-mcp (本專案)** |
+| :--- | :---: | :---: | :---: | :---: |
+| **外部套件體積** | ❌ 300MB+ Chromium | 🟡 中等 (依賴第三方驅動) | 🟢 輕量 (原生 WebSocket) | 🟢 **極致輕量 (0 下載，本機 Chrome)** |
+| **瀏覽器生命週期** | 啟動緩慢，佔記憶體 | ❌ 大多需**手動提前開瀏覽器** | ❌ 需**手動開瀏覽器**且必傳 Port | 🟢 **全自動探測啟動、用完自動秒殺** |
+| **呼叫原子化程度** | 多步驟來回 | 多步驟來回 | ❌ 25 個細碎 Tool (來回 8 輪) | 🟢 **高階複合一步到位 (1 輪完成)** |
+| **React 19 / Vue 穿透** | 框架級模擬 | ❌ 無 (普通 .value= 易失效) | ❌ 無 (Input.insertText 易丟事件) | 🟢 **原生 Setter 描述符注入，100% 穿透** |
+| **DOM 局部無損裁切** | 需手動計算 | ❌ 僅 Viewport/FullPage | ❌ 僅 Viewport/FullPage | 🟢 **CSS Selector 像素級無損裁切** |
+| **Agent 專屬特工閉環**| ❌ 僅 Raw Tools | ❌ 僅 Raw Tools | ❌ 僅 Raw Tools | 🟢 **自帶 visual-verifier 獨立沙盒特工** |
+| **Token 消耗效率** | 🔴 消耗高 | 🟡 中等 | 🔴 8 輪往返 (~20k tokens) | 🟢 **單次原子呼叫 (~1.5k tokens)** |
+
+> 詳細的逐項工具清單與 25 款工具深度評估，請參閱專題報告：  
+> 📄 **[docs/comparison_with_undetectable_cdp.md](./docs/comparison_with_undetectable_cdp.md)**
 
 ---
 
