@@ -2,7 +2,7 @@
 name: visual-verifier
 description: "專職前端 UI 實機驗收、跑版比對與視覺審查特工，具備 CDP 高精確度截圖與 DOM 物理邊界檢測能力"
 subagent: true
-mainAgent: false
+mainAgent: true
 model: inherit
 tools:
   - read_file
